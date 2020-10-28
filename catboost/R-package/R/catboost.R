@@ -2041,7 +2041,7 @@ catboost.get_plain_params <- function(model) {
         stop("Expected catboost.Model, got: ", class(model))
     if (is.null.handle(model$handle))
         model$handle <- .Call("CatBoostDeserializeModel_R", model$raw)
-    params <- .Call("CatBoostGetPlainParams_R", model$handle)
+    params <- .Call("CatBoostGetPlainParams_R", model$handle, PACKAGE="catboost")
     params <- jsonlite::fromJSON(params)
     return(params)
 }
